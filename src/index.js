@@ -1,17 +1,39 @@
+// const element =document.createElement('h1')
+// element.innerText='hello react..'
+// const container=document.getElementById('root')
+// container.appendChild(element)
+
+
 import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import ReactDom from 'react-dom'
+import { __promisify__ } from 'glob';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+const user = {
+    firstName: 'raul',
+    lastName: 'fajardo',
+    avatar: 'http://cdn4.iconfinder.com/data/icons/avatars-xmas-giveaway/128/batman_hero_avatar_comics-256.png'
+}
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+function getName(user) {
+    return `${user.firstName} ${user.lastName}`;
+}
+
+function getGreeting(user) {
+    if (user) {
+        return <h1>Hola {getName(user)}</h1>
+    }
+    return <h1>Hello Strager</h1>
+}
+const name = 'raul'
+
+const element = (
+    <div>
+        <h1>{getGreeting(user)}</h1>
+        <img src={user.avatar} />
+    </div>
+)
+const container = document.getElementById('root')
+
+// ReactDom.render(__promisify__QUE__, __DONDE___ )
+
+ReactDom.render(element, container)
